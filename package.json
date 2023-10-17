@@ -4,7 +4,8 @@
   "description": "��G\u0000e\u0000n\u0000e\u0000r\u0000a\u0000l\u0000 \u0000d\u0000e\u0000s\u0000c\u0000r\u0000i\u0000p\u0000t\u0000i\u0000o\u0000n\u0000 \u0000o\u0000f\u0000 \u0000t\u0000h\u0000e\u0000 \u0000p\u0000r\u0000o\u0000j\u0000e\u0000c\u0000t\u0000\r\u0000 \u0000",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -20,8 +21,14 @@
   "dependencies": {
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.6.2",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1",
     "sequelize": "^6.33.0",
     "sequelize-auto": "^0.8.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }

@@ -1,16 +1,17 @@
-const { connect } = require("./models/sequelize");
+const { connect, sync } = require("./models/sequelize");
 const Usuarios = require("./models/usuario");
 const Etiquetas = require("./models/etiqueta");
 const Tareas = require("./models/tarea");
 
 // // Un usuario tiene muchas tareas
-// Usuarios.hasMany(Tareas);
-// Tareas.belongsTo(Usuarios);
+Usuarios.hasMany(Tareas);
+Tareas.belongsTo(Usuarios);
 
-// // Una tarea tiene muchas etiquetas
-// Tareas.hasMany(Etiquetas);
-// Etiquetas.belongsTo(Tareas);
+// Una tarea tiene muchas etiquetas y una etiqueta está asociada a muchas tareas
+Tareas.belongsToMany(Etiquetas, { through: 'tareas_etiquetas', timestamps: false });
+Etiquetas.belongsToMany(Tareas, { through: 'tareas_etiquetas', timestamps: false });
 
 exports.initDatabase = async function () {
     await connect();
+    // await sync(); // Activar para reiniciar la base de datos
 }

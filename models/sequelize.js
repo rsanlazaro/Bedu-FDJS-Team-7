@@ -21,3 +21,13 @@ exports.connect = async function () {
         console.log(e);
     }
 };
+
+exports.sync = async function () {
+    try {
+        await sequelize.sync({ force: FORCE_DB_UPDATE === 'yes'});
+        console.log("Base de datos actualizada");
+    } catch (e) {
+        console.log("No se puede actualizar la base de datos");
+        console.log(e)
+    }
+};
