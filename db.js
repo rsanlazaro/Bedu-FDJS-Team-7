@@ -1,17 +1,18 @@
 const { connect, sync } = require("./models/sequelize");
-const Usuarios = require("./models/usuario");
-const Etiquetas = require("./models/etiqueta");
-const Tareas = require("./models/tarea");
 
-// // Un usuario tiene muchas tareas
-Usuarios.hasMany(Tareas);
-Tareas.belongsTo(Usuarios);
+const Label = require('./models/etiqueta');
+const Task = require('./models/tarea');
+const User = require('./models/usuario');
+
+// Un usuario tiene muchas tareas
+User.hasMany(Task);
+Task.belongsTo(User);
 
 // Una tarea tiene muchas etiquetas y una etiqueta está asociada a muchas tareas
-Tareas.belongsToMany(Etiquetas, { through: 'tareas_etiquetas', timestamps: false });
-Etiquetas.belongsToMany(Tareas, { through: 'tareas_etiquetas', timestamps: false });
+Task.belongsToMany(Label, { through: 'tasks_labels', timestamps: false });
+Label.belongsToMany(Task, { through: 'tasks_labels', timestamps: false });
 
 exports.initDatabase = async function () {
     await connect();
-    // await sync(); // Activar para reiniciar la base de datos
+    await sync(); // Activar para reiniciar la base de datos
 }

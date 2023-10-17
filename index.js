@@ -58,9 +58,11 @@ app.use("/auth", authRouter); // Rutas de autenticación
 
 const userRouter = require("./routes/usuario");
 const taskRouter = require("./routes/tarea");
+const labelRouter = require("./routes/etiqueta");
 
 app.use(userRouter);
 app.use(taskRouter);
+app.use(labelRouter);
 
 app.listen(8080, function(){        
     console.log("Node server running on http://localhost:8080");

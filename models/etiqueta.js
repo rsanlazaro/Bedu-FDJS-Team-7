@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("./sequelize");
 
-module.exports = sequelize.define('etiquetas', {
+module.exports = sequelize.define('label', {
   id: {
     autoIncrement: true,
     type: DataTypes.INTEGER,
@@ -14,6 +14,6 @@ module.exports = sequelize.define('etiquetas', {
   }
 }, {
   sequelize,
-  tableName: 'etiquetas',
+  tableName: 'label',
   timestamps: false
 });
