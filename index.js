@@ -1,23 +1,23 @@
 // // require('rootpath')();
 
 // // Environment variables
-// require("dotenv").config();
+require("dotenv").config();
 
 // // Database connection
 // const { initDatabase } = require("./db");
 // initDatabase();
 
 // const path = require("path");
-// const express         = require("express");
-// const app             = express();
+const express         = require("express");
+const app             = express();
 // const jwt = require("jsonwebtoken");
 // const passport = require("passport");
 // const { Strategy, ExtractJwt } = require("passport-jwt");
 // const authRouter = require("./routes/authRoutes");
-// app.use(express.json());
+app.use(express.json());
 
 // const JWT_SECRET = "contraseña!!!";
-// const {swaggerDocs: v1SwaggerDocs} = require('./routes/swagger')
+const {swaggerDocs: v1SwaggerDocs} = require('./routes/swagger')
 
 // //autenticación JWT
 // passport.use(
@@ -52,9 +52,9 @@
 //   }
 // );
 
-// app.get("/publica", function (request, response) {
-//   response.send("Cualquiera puede ver esta ruta :D");
-// });
+app.get("/publica", function (request, response) {
+  response.send("Cualquiera puede ver esta ruta :D");
+});
 
 // app.use("/auth", authRouter); // Rutas de autenticación
 
@@ -71,9 +71,6 @@
 //     v1SwaggerDocs(app, 8080);
 // });
 
-const express = require('express')
-
-const app = express()
 const PORT = process.env.PORT || 3000
 
 app.get('/', (req, res) => {
@@ -82,4 +79,5 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`)
+  v1SwaggerDocs(app, 8080);
 })
