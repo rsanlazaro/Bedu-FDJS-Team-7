@@ -2,7 +2,7 @@ const express = require("express");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const { ExtractJwt } = require("passport-jwt");
-const { Usuario } = require("../models/usuario");
+const { User } = require("../models/usuario");
 
 const JWT_SECRET = "contraseña!!!";
 
@@ -11,7 +11,7 @@ exports.login = function (request, response) {
   const { nombreUsuario, contraseña } = request.body;
 
   // Busca al usuario en la base de datos por nombre de usuario y contraseña.
-  Usuario.findOne({ where: { nombreUsuario, contraseña } })
+  User.findOne({ where: { nombreUsuario, contraseña } })
     .then((user) => {
       if (user) {
         const token = jwt.sign({ id: user.id }, JWT_SECRET);
