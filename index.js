@@ -3,6 +3,8 @@
 // Environment variables
 require("dotenv").config();
 
+const PORT = process.env.PORT || 3001;
+
 // Database connection
 const { initDatabase } = require("./db");
 initDatabase();

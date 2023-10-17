@@ -2,13 +2,25 @@ const { Sequelize } = require("sequelize");
 
 const { MYSQL_HOST, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_DATABASE, FORCE_DB_UPDATE } = process.env;
 
-const sequelize = new Sequelize({
-    dialect: 'mysql',
-    host: MYSQL_HOST,
-    username: MYSQL_USERNAME,
-    password: MYSQL_PASSWORD,
-    database: MYSQL_DATABASE
-});
+if (process.env.JAWSDB_URL) {
+    sequelize = new Sequelize(process.env.JAWSDB_URL);
+} else {
+    sequelize = new Sequelize({
+        dialect: 'mysql',
+        host: MYSQL_HOST,
+        username: MYSQL_USERNAME,
+        password: MYSQL_PASSWORD,
+        database: MYSQL_DATABASE
+    });
+}
+
+// const sequelize = new Sequelize({
+//     dialect: 'mysql',
+//     host: MYSQL_HOST,
+//     username: MYSQL_USERNAME,
+//     password: MYSQL_PASSWORD,
+//     database: MYSQL_DATABASE
+// });
 
 exports.sequelize = sequelize;
 
@@ -24,7 +36,7 @@ exports.connect = async function () {
 
 exports.sync = async function () {
     try {
-        await sequelize.sync({ force: FORCE_DB_UPDATE === 'yes'});
+        await sequelize.sync({ force: FORCE_DB_UPDATE === 'yes' });
         console.log("Base de datos actualizada");
     } catch (e) {
         console.log("No se puede actualizar la base de datos");
