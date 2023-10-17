@@ -12,6 +12,7 @@ const app             = express();
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
 const { Strategy, ExtractJwt } = require("passport-jwt");
+const {swaggerDocs: V1SwaggerDocs} = require('./swagger')
 const authRouter = require("./routes/authRoutes");
 app.use(express.json());
 
@@ -62,6 +63,6 @@ const taskRouter = require("./routes/tarea");
 app.use(userRouter);
 app.use(taskRouter);
 
-app.listen(8080, function(){        
+app.listen(8080, () => {        
     console.log("Node server running on http://localhost:8080");
 });
