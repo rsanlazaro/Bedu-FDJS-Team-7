@@ -19,29 +19,29 @@ app.use(express.json());
 // const JWT_SECRET = "contraseña!!!";
 const {swaggerDocs: v1SwaggerDocs} = require('./routes/swagger')
 
-//autenticación JWT
-passport.use(
-  new Strategy(
-    {
-      secretOrKey: JWT_SECRET,
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    },
-    function (payload, done) {
-      // Busca al usuario en la base de datos por su ID.
-      Usuario.findByPk(payload.id)
-        .then((user) => {
-          if (user) {
-            done(null, user);
-          } else {
-            done(null, false);
-          }
-        })
-        .catch((error) => {
-          done(error, false);
-        });
-    }
-  )
-);
+// //autenticación JWT
+// passport.use(
+//   new Strategy(
+//     {
+//       secretOrKey: JWT_SECRET,
+//       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+//     },
+//     function (payload, done) {
+//       // Busca al usuario en la base de datos por su ID.
+//       Usuario.findByPk(payload.id)
+//         .then((user) => {
+//           if (user) {
+//             done(null, user);
+//           } else {
+//             done(null, false);
+//           }
+//         })
+//         .catch((error) => {
+//           done(error, false);
+//         });
+//     }
+//   )
+// );
 
 app.get(
   "/protegida",
