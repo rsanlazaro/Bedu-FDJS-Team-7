@@ -7,7 +7,6 @@ require("dotenv").config();
 const { initDatabase } = require("./db");
 initDatabase();
 
-// const path = require("path");
 const express         = require("express");
 const app             = express();
 const jwt = require("jsonwebtoken");
@@ -16,32 +15,33 @@ const { Strategy, ExtractJwt } = require("passport-jwt");
 const authRouter = require("./routes/authRoutes");
 app.use(express.json());
 
-// const JWT_SECRET = "contraseña!!!";
 const {swaggerDocs: v1SwaggerDocs} = require('./routes/swagger')
 
-// //autenticación JWT
-// passport.use(
-//   new Strategy(
-//     {
-//       secretOrKey: JWT_SECRET,
-//       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-//     },
-//     function (payload, done) {
-//       // Busca al usuario en la base de datos por su ID.
-//       Usuario.findByPk(payload.id)
-//         .then((user) => {
-//           if (user) {
-//             done(null, user);
-//           } else {
-//             done(null, false);
-//           }
-//         })
-//         .catch((error) => {
-//           done(error, false);
-//         });
-//     }
-//   )
-// );
+const JWT_SECRET = "contraseña!!!";
+const User = require('../models/usuario');
+//autenticación JWT
+passport.use(
+  new Strategy(
+    {
+      secretOrKey: JWT_SECRET,
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    },
+    function (payload, done) {
+      // Busca al usuario en la base de datos por su ID.
+      User.findByPk(payload.id)
+        .then((user) => {
+          if (user) {
+            done(null, user);
+          } else {
+            done(null, false);
+          }
+        })
+        .catch((error) => {
+          done(error, false);
+        });
+    }
+  )
+);
 
 app.get(
   "/protegida",
@@ -53,7 +53,7 @@ app.get(
 );
 
 app.get("/publica", function (request, response) {
-  response.send("Cualquiera puede ver esta ruta :D");
+  response.send("Cualquiera puede ver esta ruta");
 });
 
 app.use("/auth", authRouter); // Rutas de autenticación
