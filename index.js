@@ -17,8 +17,8 @@ app.use(express.json());
 
 const {swaggerDocs: v1SwaggerDocs} = require('./routes/swagger')
 
-const JWT_SECRET = "contraseña!!!";
-const User = require('../models/usuario');
+// const JWT_SECRET = "contraseña!!!";
+// const User = require('../models/usuario');
 //autenticación JWT
 // passport.use(
 //   new Strategy(
