@@ -21,26 +21,16 @@ const JWT_SECRET = "contraseña!!!";
 const User = require('../models/usuario');
 //autenticación JWT
 passport.use(
-  new Strategy(
-    {
-      secretOrKey: JWT_SECRET,
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    },
-    function (payload, done) {
-      // Busca al usuario en la base de datos por su ID.
-      User.findByPk(payload.id)
-        .then((user) => {
-          if (user) {
-            done(null, user);
-          } else {
-            done(null, false);
-          }
-        })
-        .catch((error) => {
-          done(error, false);
-        });
-    }
-  )
+	new Strategy(
+		{
+			secretOrKey: JWT_SECRET,
+			jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+		},
+		function (payload, done) {
+			console.log("Convirtiendo el payload");
+			done(null, db);
+		}
+	)
 );
 
 app.get(
