@@ -16,6 +16,7 @@ const authRouter = require("./routes/authRoutes");
 app.use(express.json());
 
 const JWT_SECRET = "contraseña!!!";
+const {swaggerDocs: v1SwaggerDocs} = require('./routes/swagger')
 
 //autenticación JWT
 passport.use(
@@ -64,4 +65,5 @@ app.use(taskRouter);
 
 app.listen(8080, function(){        
     console.log("Node server running on http://localhost:8080");
+    v1SwaggerDocs(app, 8080);
 });
