@@ -6,8 +6,6 @@ const router = express.Router();
 
 // Ruta para autenticación
 router.post("/login", authController.login);
-
-// Ruta protegida
 router.get(
   "/protegida",
   passport.authenticate("jwt", { session: false }),

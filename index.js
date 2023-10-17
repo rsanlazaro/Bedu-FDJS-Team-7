@@ -65,4 +65,5 @@ app.use(taskRouter);
 
 app.listen(8080, () => {        
     console.log("Node server running on http://localhost:8080");
+    V1SwaggerDocs(app,8080);
 });
