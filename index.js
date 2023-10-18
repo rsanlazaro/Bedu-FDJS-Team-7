@@ -23,7 +23,7 @@ const labelRouter = require("./routes/etiqueta");
 app.use(userRouter);
 app.use(taskRouter);
 app.use(labelRouter);
-app.use(authRouter);
+// app.use(authRouter);
 
 // Manejo de errores
 app.use(validationError);
