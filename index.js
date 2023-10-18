@@ -1,5 +1,5 @@
 // Environment variables
-require("dotenv").config();
+// require("dotenv").config();
 
 // Database connection
 const { initDatabase } = require("./db");
