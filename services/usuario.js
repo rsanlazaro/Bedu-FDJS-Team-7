@@ -20,10 +20,10 @@ exports.delete = function (id) {
     });
 }
 
-exports.findByUsername = function (username) {
+exports.findByUsername = function (nombreUsuario) {
 	return User.findOne({
 		where: {
-			username,
+			nombreUsuario,
 		},
 	});
 };

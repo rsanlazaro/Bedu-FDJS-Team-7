@@ -1,33 +1,33 @@
 // Environment variables
-// require("dotenv").config();
+require("dotenv").config();
 
 // Database connection
 const { initDatabase } = require("./db");
 initDatabase();
 
-const express         = require("express");
-const app             = express();
+const express = require("express");
+const app = express();
 app.use(express.json());
 
-const {swaggerDocs: v1SwaggerDocs} = require('./routes/swagger')
+const { swaggerDocs: v1SwaggerDocs } = require('./routes/swagger')
 
 const userRouter = require("./routes/usuario");
 const taskRouter = require("./routes/tarea");
 const labelRouter = require("./routes/etiqueta");
-// const authRouter = require("./routes/auth");
+const authRouter = require("./routes/auth");
 
 // Middlewares para el manejo de errores
-// const validationError = require("./middlewares/validation-error");
-// const unknownError = require("./middlewares/unknown-error");
+const validationError = require("./middlewares/validation-error");
+const unknownError = require("./middlewares/unknown-error");
 
 app.use(userRouter);
 app.use(taskRouter);
 app.use(labelRouter);
-// app.use(authRouter);
+app.use(authRouter);
 
 // Manejo de errores
-// app.use(validationError);
-// app.use(unknownError);
+app.use(validationError);
+app.use(unknownError);
 
 const PORT = process.env.PORT || 3000;
 

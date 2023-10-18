@@ -3,12 +3,12 @@ const labelService = require('../services/etiqueta');
 
 exports.etiqueta = async function (request, response) {
     const { id } = request.params;
-    const user = await labelService.task(id);
+    const user = await labelService.label(id);
     response.json(user);
 }
 
 exports.etiquetas = async function (request, response) {
-    const users = await labelService.tasks();
+    const users = await labelService.labels();
     response.json(users);
 }
 
