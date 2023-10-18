@@ -17,8 +17,8 @@ const labelRouter = require("./routes/etiqueta");
 const authRouter = require("./routes/auth");
 
 // Middlewares para el manejo de errores
-const validationError = require("./middlewares/validation-error");
-const unknownError = require("./middlewares/unknown-error");
+// const validationError = require("./middlewares/validation-error");
+// const unknownError = require("./middlewares/unknown-error");
 
 app.use(userRouter);
 app.use(taskRouter);
