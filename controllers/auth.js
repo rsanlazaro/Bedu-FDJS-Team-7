@@ -1,14 +1,13 @@
-const { findByUsername } = require("../services/usuario");
+const userService = require("../services/usuario");
 const jwt = require("jsonwebtoken");
 
 exports.login = async function (request, response) {
 	const { nombreUsuario, contraseña } = request.body;
 
-	const user = await findByUsername(nombreUsuario);
-
+	const user = await userService.findByUsername(nombreUsuario);
 	if (!user) {
 		return response.status(401).json({
-			message: "Usuario o contraseña inválidos",
+			message: "Usuario incorrecto",
 			messagedev: "No se encontro el usuario en la base de datos",
 			code: "ERR_AUTH",
 		});
@@ -16,8 +15,8 @@ exports.login = async function (request, response) {
 
 	if (user.contraseña !== contraseña) {
 		return response.status(401).json({
-			message: "Usuario o contraseña inválidos",
-			messagedev: "No se encontro el usuario en la base de datos",
+			message: "La contraseña es inválida",
+			messagedev: "No se encontro el usuario con la contraseña en la base de datos",
 			code: "ERR_AUTH",
 		});
 	}

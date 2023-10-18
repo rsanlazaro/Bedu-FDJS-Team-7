@@ -14,5 +14,5 @@ Label.belongsToMany(Task, { through: 'tasks_labels', timestamps: false });
 
 exports.initDatabase = async function () {
     await connect();
-    await sync(); // Activar para reiniciar la base de datos
+    // await sync(); // Activar para reiniciar la base de datos
 }

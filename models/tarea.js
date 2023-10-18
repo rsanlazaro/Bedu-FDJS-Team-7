@@ -9,14 +9,6 @@ module.exports = sequelize.define('task', {
     allowNull: false,
     primaryKey: true
   },
-  // idUsuario: {
-  //   type: DataTypes.INTEGER,
-  //   allowNull: true,
-  //   references: {
-  //     model: 'usuarios',
-  //     key: 'id'
-  //   }
-  // },
   titulo: {
     type: DataTypes.STRING(255),
     allowNull: false
