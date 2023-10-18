@@ -14,7 +14,7 @@ const {swaggerDocs: v1SwaggerDocs} = require('./routes/swagger')
 const userRouter = require("./routes/usuario");
 const taskRouter = require("./routes/tarea");
 const labelRouter = require("./routes/etiqueta");
-const authRouter = require("./routes/auth");
+// const authRouter = require("./routes/auth");
 
 // Middlewares para el manejo de errores
 // const validationError = require("./middlewares/validation-error");
