@@ -19,3 +19,15 @@ exports.delete = function (id) {
         },
     });
 }
+
+exports.findByUsername = function (username) {
+	return User.findOne({
+		where: {
+			username,
+		},
+	});
+};
+
+exports.findById = function (id) {
+	return User.findByPk(id);
+};
