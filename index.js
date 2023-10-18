@@ -61,12 +61,10 @@ app.use("/auth", authRouter); // Rutas de autenticación
 const userRouter = require("./routes/usuario");
 const taskRouter = require("./routes/tarea");
 const labelRouter = require("./routes/etiqueta");
-const authRouter = require("./routes/authRoutes");
 
 app.use(userRouter);
 app.use(taskRouter);
 app.use(labelRouter);
-app.use(authRouter);
 
 const PORT = process.env.PORT || 3000
 
