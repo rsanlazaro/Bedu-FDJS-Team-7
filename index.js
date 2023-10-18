@@ -26,8 +26,8 @@ app.use(labelRouter);
 // app.use(authRouter);
 
 // Manejo de errores
-app.use(validationError);
-app.use(unknownError);
+// app.use(validationError);
+// app.use(unknownError);
 
 const PORT = process.env.PORT || 3000;
 
